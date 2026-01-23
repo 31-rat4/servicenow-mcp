@@ -337,6 +337,33 @@ from servicenow_mcp.tools.project_tools import (
     update_project as update_project_tool,
     list_projects as list_projects_tool,
 )
+from servicenow_mcp.tools.acl_tools import (
+    ListACLsParams,
+    GetACLParams,
+    CreateACLParams,
+    UpdateACLParams,
+    DeleteACLParams,
+    ListRolesParams,
+    GetRoleParams,
+    CreateRoleParams,
+    UpdateRoleParams,
+    ListSecurityAttributesParams,
+    CreateSecurityAttributeParams,
+    ACLResponse,
+)
+from servicenow_mcp.tools.acl_tools import (
+    list_acls as list_acls_tool,
+    get_acl as get_acl_tool,
+    create_acl as create_acl_tool,
+    update_acl as update_acl_tool,
+    delete_acl as delete_acl_tool,
+    list_roles as list_roles_security_tool,
+    get_role as get_role_tool,
+    create_role as create_role_tool,
+    update_role as update_role_tool,
+    list_security_attributes as list_security_attributes_tool,
+    create_security_attribute as create_security_attribute_tool,
+)
 
 # Define a type alias for the Pydantic models or dataclasses used for params
 ParamsModel = Type[Any]  # Use Type[Any] for broader compatibility initially
@@ -952,6 +979,84 @@ def get_tool_definitions(
             str,  # Expects JSON string
             "List projects from ServiceNow",
             "json",  # Tool returns list/dict
+        ),
+        # Access Control & Security Tools
+        "list_acls": (
+            list_acls_tool,
+            ListACLsParams,
+            Dict[str, Any],  # Expects dict
+            "List Access Control Lists from ServiceNow",
+            "raw_dict",  # Tool returns raw dict
+        ),
+        "get_acl": (
+            get_acl_tool,
+            GetACLParams,
+            ACLResponse,  # Expects Pydantic model
+            "Get a specific Access Control List from ServiceNow",
+            "raw_pydantic",  # Tool returns Pydantic model
+        ),
+        "create_acl": (
+            create_acl_tool,
+            CreateACLParams,
+            ACLResponse,  # Expects Pydantic model
+            "Create a new Access Control List in ServiceNow",
+            "raw_pydantic",  # Tool returns Pydantic model
+        ),
+        "update_acl": (
+            update_acl_tool,
+            UpdateACLParams,
+            ACLResponse,  # Expects Pydantic model
+            "Update an existing Access Control List in ServiceNow",
+            "raw_pydantic",  # Tool returns Pydantic model
+        ),
+        "delete_acl": (
+            delete_acl_tool,
+            DeleteACLParams,
+            ACLResponse,  # Expects Pydantic model
+            "Delete an Access Control List in ServiceNow",
+            "raw_pydantic",  # Tool returns Pydantic model
+        ),
+        "list_roles_security": (
+            list_roles_security_tool,
+            ListRolesParams,
+            Dict[str, Any],  # Expects dict
+            "List security roles from ServiceNow",
+            "raw_dict",  # Tool returns raw dict
+        ),
+        "get_role": (
+            get_role_tool,
+            GetRoleParams,
+            ACLResponse,  # Expects Pydantic model
+            "Get a specific role from ServiceNow",
+            "raw_pydantic",  # Tool returns Pydantic model
+        ),
+        "create_role": (
+            create_role_tool,
+            CreateRoleParams,
+            ACLResponse,  # Expects Pydantic model
+            "Create a new role in ServiceNow",
+            "raw_pydantic",  # Tool returns Pydantic model
+        ),
+        "update_role": (
+            update_role_tool,
+            UpdateRoleParams,
+            ACLResponse,  # Expects Pydantic model
+            "Update an existing role in ServiceNow",
+            "raw_pydantic",  # Tool returns Pydantic model
+        ),
+        "list_security_attributes": (
+            list_security_attributes_tool,
+            ListSecurityAttributesParams,
+            Dict[str, Any],  # Expects dict
+            "List security attributes from ServiceNow",
+            "raw_dict",  # Tool returns raw dict
+        ),
+        "create_security_attribute": (
+            create_security_attribute_tool,
+            CreateSecurityAttributeParams,
+            ACLResponse,  # Expects Pydantic model
+            "Create a security attribute in ServiceNow",
+            "raw_pydantic",  # Tool returns Pydantic model
         ),
     }
     return tool_definitions

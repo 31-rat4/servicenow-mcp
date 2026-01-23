@@ -3,7 +3,11 @@ Tests for Access Control List (ACL) and Security tools.
 
 This module contains unit tests for ACL, Role, and Security Attribute management.
 """
+<<<<<<< HEAD
 
+=======
+import requests
+>>>>>>> feature/acess_control
 import pytest
 from unittest.mock import Mock, patch, MagicMock
 from servicenow_mcp.tools.acl_tools import (
@@ -434,7 +438,7 @@ class TestErrorHandling:
     @patch("servicenow_mcp.tools.acl_tools.requests.get")
     def test_list_acls_request_error(self, mock_get, mock_config, mock_auth_manager):
         """Test error handling in list_acls."""
-        mock_get.side_effect = Exception("Connection error")
+        mock_get.side_effect = requests.exceptions.RequestException("Connection error")
 
         params = ListACLsParams(limit=10, offset=0)
         result = list_acls(mock_config, mock_auth_manager, params)
@@ -445,7 +449,7 @@ class TestErrorHandling:
     @patch("servicenow_mcp.tools.acl_tools.requests.post")
     def test_create_acl_request_error(self, mock_post, mock_config, mock_auth_manager):
         """Test error handling in create_acl."""
-        mock_post.side_effect = Exception("API error")
+        mock_post.side_effect = requests.exceptions.RequestException("API error")
 
         params = CreateACLParams(
             name="test.acl", type="record", operation="read", active=True

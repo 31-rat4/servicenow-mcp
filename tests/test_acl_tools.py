@@ -3,11 +3,8 @@ Tests for Access Control List (ACL) and Security tools.
 
 This module contains unit tests for ACL, Role, and Security Attribute management.
 """
-<<<<<<< HEAD
 
-=======
 import requests
->>>>>>> feature/acess_control
 import pytest
 from unittest.mock import Mock, patch, MagicMock
 from servicenow_mcp.tools.acl_tools import (

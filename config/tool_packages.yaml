@@ -120,6 +120,16 @@ platform_developer:
   - update_role
   - list_security_attributes
   - create_security_attribute
+  # CMDB Management
+  - list_cis
+  - get_ci
+  - create_ci
+  - update_ci
+  - delete_ci
+  - list_ci_relationships
+  - create_ci_relationship
+  - delete_ci_relationship
+  - search_cis
 
 agile_management:
   # Story Management
@@ -169,6 +179,16 @@ system_administrator:
   # System Logs
   - list_syslog_entries
   - get_syslog_entry
+  # CMDB Management
+  - list_cis
+  - get_ci
+  - create_ci
+  - update_ci
+  - delete_ci
+  - list_ci_relationships
+  - create_ci_relationship
+  - delete_ci_relationship
+  - search_cis
 
 security_administrator:
   # Access Control Lists
@@ -314,3 +334,13 @@ full:
   - update_role
   - list_security_attributes
   - create_security_attribute
+  # CMDB Management
+  - list_cis
+  - get_ci
+  - create_ci
+  - update_ci
+  - delete_ci
+  - list_ci_relationships
+  - create_ci_relationship
+  - delete_ci_relationship
+  - search_cis

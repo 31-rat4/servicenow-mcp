@@ -364,6 +364,29 @@ from servicenow_mcp.tools.acl_tools import (
     list_security_attributes as list_security_attributes_tool,
     create_security_attribute as create_security_attribute_tool,
 )
+from servicenow_mcp.tools.cmdb_tools import (
+    ListCIsParams,
+    GetCIParams,
+    CreateCIParams,
+    UpdateCIParams,
+    DeleteCIParams,
+    ListCIRelationshipsParams,
+    CreateCIRelationshipParams,
+    DeleteCIRelationshipParams,
+    SearchCIsParams,
+    CMDBResponse,
+)
+from servicenow_mcp.tools.cmdb_tools import (
+    list_cis as list_cis_tool,
+    get_ci as get_ci_tool,
+    create_ci as create_ci_tool,
+    update_ci as update_ci_tool,
+    delete_ci as delete_ci_tool,
+    list_ci_relationships as list_ci_relationships_tool,
+    create_ci_relationship as create_ci_relationship_tool,
+    delete_ci_relationship as delete_ci_relationship_tool,
+    search_cis as search_cis_tool,
+)
 
 # Define a type alias for the Pydantic models or dataclasses used for params
 ParamsModel = Type[Any]  # Use Type[Any] for broader compatibility initially
@@ -1057,6 +1080,70 @@ def get_tool_definitions(
             ACLResponse,  # Expects Pydantic model
             "Create a security attribute in ServiceNow",
             "raw_pydantic",  # Tool returns Pydantic model
+        ),
+        # CMDB Management Tools
+        "list_cis": (
+            list_cis_tool,
+            ListCIsParams,
+            Dict[str, Any],  # Expects dict
+            "List configuration items from ServiceNow CMDB",
+            "raw_dict",  # Tool returns raw dict
+        ),
+        "get_ci": (
+            get_ci_tool,
+            GetCIParams,
+            Dict[str, Any],  # Expects dict
+            "Get a specific configuration item from ServiceNow CMDB",
+            "raw_dict",  # Tool returns raw dict
+        ),
+        "create_ci": (
+            create_ci_tool,
+            CreateCIParams,
+            CMDBResponse,  # Expects Pydantic model
+            "Create a new configuration item in ServiceNow CMDB",
+            "raw_pydantic",  # Tool returns Pydantic model
+        ),
+        "update_ci": (
+            update_ci_tool,
+            UpdateCIParams,
+            CMDBResponse,  # Expects Pydantic model
+            "Update an existing configuration item in ServiceNow CMDB",
+            "raw_pydantic",  # Tool returns Pydantic model
+        ),
+        "delete_ci": (
+            delete_ci_tool,
+            DeleteCIParams,
+            CMDBResponse,  # Expects Pydantic model
+            "Delete a configuration item from ServiceNow CMDB",
+            "raw_pydantic",  # Tool returns Pydantic model
+        ),
+        "list_ci_relationships": (
+            list_ci_relationships_tool,
+            ListCIRelationshipsParams,
+            Dict[str, Any],  # Expects dict
+            "List relationships for a configuration item",
+            "raw_dict",  # Tool returns raw dict
+        ),
+        "create_ci_relationship": (
+            create_ci_relationship_tool,
+            CreateCIRelationshipParams,
+            CMDBResponse,  # Expects Pydantic model
+            "Create a relationship between two configuration items",
+            "raw_pydantic",  # Tool returns Pydantic model
+        ),
+        "delete_ci_relationship": (
+            delete_ci_relationship_tool,
+            DeleteCIRelationshipParams,
+            CMDBResponse,  # Expects Pydantic model
+            "Delete a relationship between configuration items",
+            "raw_pydantic",  # Tool returns Pydantic model
+        ),
+        "search_cis": (
+            search_cis_tool,
+            SearchCIsParams,
+            Dict[str, Any],  # Expects dict
+            "Search for configuration items by name or description",
+            "raw_dict",  # Tool returns raw dict
         ),
     }
     return tool_definitions

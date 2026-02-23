@@ -52,6 +52,17 @@ from servicenow_mcp.tools.changeset_tools import (
     publish_changeset,
     update_changeset,
 )
+from servicenow_mcp.tools.cmdb_tools import (
+    list_cis,
+    get_ci,
+    create_ci,
+    update_ci,
+    delete_ci,
+    list_ci_relationships,
+    create_ci_relationship,
+    delete_ci_relationship,
+    search_cis,
+)
 from servicenow_mcp.tools.incident_tools import (
     add_comment,
     create_incident,
@@ -235,11 +246,21 @@ __all__ = [
     "create_project",
     "update_project",
     "list_projects",
-
+    
+    # CMDB tools
+    "list_cis",
+    "get_ci",
+    "create_ci",
+    "update_ci",
+    "delete_ci",
+    "list_ci_relationships",
+    "create_ci_relationship",
+    "delete_ci_relationship",
+    "search_cis",
     
     # Future tools
     # "create_problem",
     # "update_problem",
     # "create_request",
     # "update_request",
-] 
+]
